@@ -1,0 +1,25 @@
+{
+    "users": {
+        "admin": {
+            "email": "admin@hotel.com",
+            "password": "admin",
+            "role": "admin"
+        },
+        "Taha": {
+            "email": "email@gmail.com",
+            "password": "1234",
+            "role": "user"
+        },
+        "testuser": {
+            "email": "test@test.com",
+            "password": "test",
+            "role": "user"
+        },
+        "me": {
+            "email": "me@e.com",
+            "password": "me",
+            "role": "user"
+        }
+    },
+    "blockedUsers": []
+}
