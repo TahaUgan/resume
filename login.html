@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hotel Management</title>
+    <link rel="stylesheet" href="css/bright-theme.css">
+    <script>
+        // Check if admin user exists in localStorage
+        window.addEventListener('DOMContentLoaded', function() {
+            let localUsers = localStorage.getItem('hotelUsers') || '';
+            const lines = localUsers.split('\n');
+            let adminExists = false;
+            
+            // Check if admin user exists
+            for (const line of lines) {
+                const [user] = line.trim().split(':');
+                if (user === 'admin') {
+                    adminExists = true;
+                    break;
+                }
+            }
+            
+            // If admin doesn't exist, add it
+            if (!adminExists) {
+                localUsers += `\nadmin:admin`;
+                localStorage.setItem('hotelUsers', localUsers);
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Hotel Management</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html" class="active">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p style="margin-top:1rem;">Don't have an account? <a href="signup.html">Sign up here</a>.</p>
+        </div>
+    </main>
+    <script src="js/login.js"></script>
+</body>
+</html> 

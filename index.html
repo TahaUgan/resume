@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="css/bright-theme.css">
+</head>
+<body>
+<script>
+    const user = localStorage.getItem('hotelUser');
+    if (user === 'admin') {
+        window.location.href = 'admin.html';
+    } else if (user) {
+        window.location.href = 'rooms.html';
+    }
+</script>
+    <nav class="navbar">
+        <div class="logo">Hotel Management</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="hero-section">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Hotel Image" class="hero-image">
+            <div class="hero-content">
+                <h2>Luxury & Comfort</h2>
+                <p>Experience the perfect blend of luxury and comfort at our hotel.</p>
+                <a href="login.html"><button class="cta-button">Get Started</button></a>
+            </div>
+        </section>
+        <section style="background: #fffde7; border-radius: 18px; box-shadow: 0 4px 16px rgba(255, 238, 88, 0.10); padding: 2.5rem 2rem; margin-top: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <h2 style="color: #42a5f5; margin-bottom: 1rem;">Why Choose Our Hotel?</h2>
+            <ul style="font-size: 1.2rem; line-height: 2; color: #444; margin-bottom: 2rem;">
+                <li>🌟 <strong>Prime Location:</strong> In the heart of the city, close to attractions and business centers.</li>
+                <li>🛏️ <strong>Modern, Spacious Rooms:</strong> Deluxe, Suite, and Standard options for every need.</li>
+                <li>🍽️ <strong>Gourmet Restaurant:</strong> Enjoy world-class cuisine and a complimentary breakfast buffet.</li>
+                <li>🏊 <strong>Rooftop Pool & Spa:</strong> Relax and unwind with stunning city views.</li>
+                <li>🚗 <strong>Free Parking & Airport Shuttle:</strong> Hassle-free arrival and departure.</li>
+                <li>💻 <strong>High-Speed Wi-Fi:</strong> Stay connected everywhere in the hotel.</li>
+                <li>👨‍👩‍👧‍👦 <strong>Family & Business Friendly:</strong> Conference rooms, kids' play area, and more.</li>
+            </ul>
+            <div style="text-align:center;">
+                <a href="signup.html"><button class="cta-button" style="font-size:1.2rem;">Book Your Stay Now</button></a>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms - Hotel Management</title>
+    <link rel="stylesheet" href="css/bright-theme.css">
+    <script>
+        // Check login status and update home links
+        window.addEventListener('DOMContentLoaded', function() {
+            const currentUser = localStorage.getItem('hotelUser');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update both home links
+            const homeLinks = document.querySelectorAll('a[href="index.html"]');
+            homeLinks.forEach(link => {
+                link.href = 'loggedHome.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Hotel Management</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rooms.html" class="active">Rooms</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Choose a Room Category</h2>
+        <div id="category-list" class="room-grid"></div>
+    </main>
+    <div id="booking-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:#fff;border-radius:16px;max-width:1200px;width:98vw;display:flex;box-shadow:0 8px 32px rgba(66,165,245,0.15);overflow:hidden;">
+            <form id="booking-form" style="flex:1;padding:2rem;display:flex;flex-direction:column;gap:1.2rem;min-width:400px;">
+                <h3>Book a Room</h3>
+                <label style="font-size:1.1rem;">Check-in Date:<input type="date" id="modal-checkin" required style="font-size:1.1rem;padding:0.7rem 1rem;width:100%;"></label>
+                <label style="font-size:1.1rem;">Check-out Date:<input type="date" id="modal-checkout" required style="font-size:1.1rem;padding:0.7rem 1rem;width:100%;"></label>
+                <div class="form-group">
+                    <label for="modal-persons">Number of Persons:</label>
+                    <input type="number" id="modal-persons" min="1" max="4" required>
+                </div>
+                <div id="room-select-area" style="display:none;"></div>
+                <div style="margin-top:1rem;display:flex;gap:1rem;">
+                    <button type="submit" style="background:#42a5f5;color:#fff;padding:0.9rem 2rem;border:none;border-radius:8px;font-weight:600;font-size:1.1rem;">Book</button>
+                    <button type="button" id="close-modal" style="background:#eee;color:#222;padding:0.9rem 2rem;border:none;border-radius:8px;font-size:1.1rem;">Cancel</button>
+                </div>
+            </form>
+            <div id="modal-room-image" style="flex:1.5;min-width:400px;background:#f4f4f4;display:flex;align-items:center;justify-content:center;padding:2rem;">
+                <!-- Room image will be inserted here -->
+            </div>
+        </div>
+    </div>
+    <script src="js/rooms.js"></script>
+</body>
+</html> 

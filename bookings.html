@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bookings - Hotel Management</title>
+    <link rel="stylesheet" href="css/bright-theme.css">
+    <script>
+        // Check login status and update home links
+        window.addEventListener('DOMContentLoaded', function() {
+            const currentUser = localStorage.getItem('hotelUser');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update both home links
+            const homeLinks = document.querySelectorAll('a[href="index.html"]');
+            homeLinks.forEach(link => {
+                link.href = 'loggedHome.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Hotel Management</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="bookings.html" class="active">Bookings</a></li>
+            <li><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Your Bookings</h2>
+        <div id="booking-list"></div>
+    </main>
+    <script src="js/bookings.js"></script>
+</body>
+</html> 

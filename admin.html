@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Hotel Management</title>
+    <link rel="stylesheet" href="css/bright-theme.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="adminHome.html" class="logo">Hotel Management</a>
+        <ul class="nav-links">
+            <li><a href="adminHome.html">Home</a></li>
+            <li><a href="admin.html" class="active">Admin Panel</a></li>
+            <li><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="admin-container">
+            <div class="admin-sidebar">
+                <button class="admin-tab active" data-tab="bookings">All Bookings</button>
+                <button class="admin-tab" data-tab="rooms">Room Management</button>
+                <button class="admin-tab" data-tab="users">User Management</button>
+                <button class="admin-tab" data-tab="reports">Reports</button>
+            </div>
+            
+            <div class="admin-content">
+                <div id="bookings-tab" class="admin-tab-content active">
+                    <h2>All Bookings</h2>
+                    <div class="admin-filters">
+                        <select id="booking-filter">
+                            <option value="all">All Bookings</option>
+                            <option value="active">Active Bookings</option>
+                            <option value="future">Future Bookings</option>
+                            <option value="past">Past Bookings</option>
+                        </select>
+                        <input type="date" id="date-filter" placeholder="Filter by date">
+                    </div>
+                    <div id="admin-booking-list"></div>
+                </div>
+                
+                <div id="rooms-tab" class="admin-tab-content">
+                    <h2>Room Management</h2>
+                    <div class="room-management">
+                        <div class="room-status">
+                            <h3>Room Status Overview</h3>
+                            <div id="room-status-summary"></div>
+                        </div>
+                        <div class="room-actions">
+                            <h3>Room Actions</h3>
+                            <button id="maintenance-btn">Set Room for Maintenance</button>
+                            <button id="available-btn">Set Room as Available</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="users-tab" class="admin-tab-content">
+                    <h2>User Management</h2>
+                    <div class="user-management">
+                        <div class="user-list">
+                            <h3>Registered Users</h3>
+                            <div id="user-list"></div>
+                        </div>
+                        <div class="user-actions">
+                            <h3>User Actions</h3>
+                            <button id="block-user-btn">Block User</button>
+                            <button id="unblock-user-btn">Unblock User</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="reports-tab" class="admin-tab-content">
+                    <h2>Reports</h2>
+                    <div class="reports-section">
+                        <div class="report-filters">
+                            <select id="report-type">
+                                <option value="occupancy">Occupancy Report</option>
+                                <option value="revenue">Revenue Report</option>
+                                <option value="bookings">Booking Statistics</option>
+                            </select>
+                            <input type="month" id="report-month">
+                            <button id="generate-report">Generate Report</button>
+                        </div>
+                        <div id="report-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="room-selection-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:#fff;border-radius:16px;max-width:800px;width:90vw;padding:2rem;box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+            <h3 id="modal-title" style="margin:0 0 1.5rem 0;color:#1976d2;">Select Room</h3>
+            <div style="margin-bottom:1.5rem;">
+                <div style="display:flex;gap:1rem;margin-bottom:1rem;">
+                    <select id="floor-filter" style="padding:0.5rem;border:1px solid #ddd;border-radius:4px;flex:1;">
+                        <option value="">All Floors</option>
+                        <option value="1">Floor 1</option>
+                        <option value="2">Floor 2</option>
+                        <option value="3">Floor 3</option>
+                        <option value="4">Floor 4</option>
+                        <option value="5">Floor 5</option>
+                    </select>
+                    <select id="category-filter" style="padding:0.5rem;border:1px solid #ddd;border-radius:4px;flex:1;">
+                        <option value="">All Categories</option>
+                        <option value="Deluxe">Deluxe</option>
+                        <option value="Suite">Suite</option>
+                        <option value="Standard">Standard</option>
+                    </select>
+                    <select id="status-filter" style="padding:0.5rem;border:1px solid #ddd;border-radius:4px;flex:1;">
+                        <option value="">All Status</option>
+                        <option value="available">Available</option>
+                        <option value="occupied">Occupied</option>
+                        <option value="maintenance">Maintenance</option>
+                    </select>
+                </div>
+                <input type="text" id="room-search" placeholder="Search by Room ID..." style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+            </div>
+            <div id="room-selection-list" style="max-height:400px;overflow-y:auto;margin-bottom:1.5rem;">
+                <!-- Room list will be populated here -->
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:1rem;">
+                <button id="cancel-room-selection" style="padding:0.7rem 1.5rem;border:none;border-radius:6px;background:#f5f5f5;color:#333;cursor:pointer;">Cancel</button>
+                <button id="confirm-room-selection" style="padding:0.7rem 1.5rem;border:none;border-radius:6px;background:#1976d2;color:white;cursor:pointer;">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html> 
